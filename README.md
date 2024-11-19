@@ -68,3 +68,86 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Documentation for Project
+
+1. User Guide
+Project Setup
+
+Prerequisites:
+Ensure you have Python (version 3.x) installed for the backend and Node.js (version 14 or above) for the frontend.
+Install dependencies for both backend and frontend.
+Backend Setup (Flask)
+Navigate to the backend directory.
+Set up a virtual environment:
+python -m venv venv
+source venv/bin/activate  # On Windows, use venv\Scripts\activate
+Install the required libraries:
+pip install -r requirements.txt
+Start the Flask server:
+python app.py
+The backend should now run at http://127.0.0.1:5000.
+Frontend Setup (React)
+Navigate to the frontend directory.
+Install the required packages:
+npm install
+Start the React app:
+npm start
+Access the frontend at http://localhost:3000.
+Usage
+
+Open the frontend at http://localhost:3000.
+Enter the URL, search type, and search term.
+Click "Scrape Website" to initiate the web scraping process, and view results.
+
+2. Developer Guide
+
+Project Structure
+
+Backend (Flask):
+app.py: Main backend file that handles API requests.
+Key Libraries: Flask, Flask-CORS, requests, BeautifulSoup.
+Frontend (React):
+App.js: Main React component with form elements for user input and button interactions.
+index.js: Entry point of the React app.
+index.css: Contains global styles for the frontend.
+Key Functions and Components
+
+Backend (app.py):
+scrape_website(url): Fetches HTML content from the specified URL, parses it with BeautifulSoup, and extracts links, images, and text items.
+/api/scrape: API endpoint that receives POST requests from the frontend. It calls scrape_website and returns results based on search_type.
+Frontend (App.js):
+handleSubmit: Handles form submission, sending a request to /api/scrape with the user-provided URL, search type, and search term.
+Rendering Results: Results from the backend are displayed based on the user's search criteria.
+
+3. API Documentation
+
+Endpoint: /api/scrape
+Method: POST
+Description: Processes a web scraping request.
+Parameters:
+url (string): The URL to scrape.
+search_type (string): Type of search (link, image, or text).
+search_term (string): The term to filter results.
+Response: JSON array of matching items or a message if no matches are found.
+
+4. Project Report
+
+Summary of Contributions
+
+Backend: Set up a Flask server to handle scraping requests with BeautifulSoup.
+Frontend: Created a React interface for user input, request handling, and displaying results.
+Challenges and Solutions
+
+Challenge: Managing cross-origin requests between React and Flask.
+Solution: Used Flask-CORS to allow communication between the two local servers.
+Challenge: Parsing HTML effectively to find specific elements.
+Solution: Used BeautifulSoup’s find_all to retrieve relevant tags efficiently.
+Reflection on Python Libraries
+
+BeautifulSoup: Ideal for parsing HTML, but it requires understanding of HTML structure for accurate results.
+Flask: A straightforward choice for handling backend API requests in Python.
+Unexpected Findings
+
+Minor compatibility issues between certain requests and HTML structures.
+Changes from the original plan included adding specific error handling for better user feedback.
